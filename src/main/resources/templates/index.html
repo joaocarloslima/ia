@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT-like Page</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white w-full max-w-2xl rounded-lg shadow-lg p-6 flex flex-col h-full">
+        <div class="flex-1 overflow-y-auto mb-4">
+            <div class="space-y-4">
+                <div th:each="message, messageStat : ${messages}">
+                    <div class="flex items-start" th:classappend="${messageStat.odd} ? 'justify-start' : 'justify-end'">
+                        <div class="p-3 rounded-lg" th:classappend="${messageStat.odd} ? 'bg-gray-200' : 'bg-blue-200'">
+                            <p th:text="${message}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form  class="flex">
+            <input name="message" type="text" class="flex-1 border rounded-l-lg p-2" placeholder="Type your message...">
+            <button class="bg-blue-500 text-white p-2 rounded-r-lg">Send</button>
+        </form>
+    </div>
+</body>
+</html>
